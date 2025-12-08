@@ -264,3 +264,152 @@ To enable deeper and more flexible analysis, I transformed the flat structure in
 ## Data Reduction
 In the Date table, the Monthkey and Date columns are the columns whose data will be deleted because this is redundant data for the group. In addition, the Customer table data is also chosen by the group to be ignored, not analyzed and used much other than to calculate the total number of customers who have purchased because the table data is difficult to analyze and does not have a clear connection with other tables as well as the Sales table.
 
+## Data Model
+![Data Model](./images/Data_model.png)
+- Model type: This is a Snowflake Schema data model
+- Structure:
+  - There is a central table called "Sales" (fact table).
+  - Relationship between tables:
+    - Sales → Date
+    - Sales → SalesOrder → Channel 
+    - Sales → Product → Subcategory → Category
+    - Sales → SalesTerritory → Country → Group
+    - Sales → Reseller → Business Type
+
+# Analysis
+## Overview dashboard
+![Overview dashboard](./images/overview_dashboard.png)
+
+The Overview dashboard provides an overview of CRC's sales performance.
+
+Financial metrics that businesses are interested in can help businesses monitor and evaluate sales performance.
+- Standard cost: 43.97 million
+- Total cost: 97.26 million
+- Number of products sold: 275 thousand
+- Total orders: 31 thousand
+- Total revenue: 110.34 million
+- Profit: 13.08 million
+- Total customers: 18.49 thousand
+- Profit margin: 11.85%
+
+**The chart shows the company's total sales and Total product costs by year from 2018 to 2020**
+
+The company's total sales have increased steadily from 2018 to 2019 and started to change after 2019.
+- The growth rate increased steadily and reached its highest in 2019, with 42.63 million.
+- By 2020, it began to decline sharply, down to 25.88 million.
+
+The company's total expenses have increased steadily but at a slower rate than revenue from 2018 to 2020.
+- The highest growth rate was achieved in 2019, reaching 38.17 million.
+- However, by 2020, the company's profit began to decline to 22.15 million.
+
+-> The chart shows that the business is growing well from 2018 to 2020. Sales revenue increased quite steadily, product costs were well controlled, so the growth rate was quite slow.
+
+**The chart shows the total number of products by business type**
+- The business type with the highest number of products is "Warehouse" with 112,000 products, accounting for 40.7% of the total number of products.
+- The business type with the lowest number of products is "Specialty Bike Shop" with 22,000 products, accounting for only 8% of the total number of products.
+- The business type "Vaule Added Reseller" achieved 80,000 products, accounting for 29.09%
+
+-> From there, we can see that the Warehouse type is accounting for the highest number of products sold compared to the other two types of businesses.
+
+**The chart shows the estimated total production cost for each product category**
+- The product type with the highest standard cost is "Bikes" with 84.105 million, accounting for 86.47% of the total cost.
+- The product type with the lowest standard cost is "Accessories" with 0.638M, accounting for only 0.5% of the total cost.
+
+-> This shows that the standard cost of the Bike product type is the highest, followed by Components with 10.766 million, Clothing with 1.749 million and finally Accessories with 0.638 million.
+
+**The chart shows the total number of sales orders by sales channel**
+
+Based on the chart, we see that there are 2 sales channels:
+- On the Internet sales channel, the number of orders is 27.66K, accounting for 87.92%
+- On the Reseller sales channel, the number of orders is 3.80K, accounting for 12.08%
+
+-> This shows that customers buy mainly on the Internet sales channel, with the number of orders accounting for 75.84% more than on the Reseller channel.
+
+**The chart shows the standard cost of products by region**
+- The region with the highest product profit is North America with 5.849 million, accounting for 44.72%.
+- The region with the lowest product profit is Pacific with 3,606 million, accounting for 27.57%.
+- The remaining region is Europe with a profit of 3,624 million, accounting for 27.71%
+
+-> This shows that the North America region is the most profitable market for the business, accounting for more than 2/3 of the total standard product cost. Next are Europe and Pacific with profits that do not differ too much.
+
+## Year dashboard
+![Year dashboard](./images/year_dashboard.png)
+
+This dashboard provides an overview of the company's annual business figures.
+
+In the dashboard, there are charts showing each index of each year that the company is interested in so that it can monitor and analyze business performance, thereby making strategic decisions to improve business performance and maintain sustainable development.
+
+**Chart 1: Sum of Sale Amount by Year**
+- Vertical column chart showing total revenue by year from 2017 to 2020. Evaluate revenue growth over the years to determine growth trends and adjust business strategies in a timely manner.
+- 2017: 12M
+- 2018: 30M
+- 2019: 43M
+- 2020: 26M
+
+-> This show that the company’s revenue performance has seen strong growth over the 2017–2019 period, from a low of $12 million in 2017 (possibly due to lack of brand recognition) to a peak of $43 million in 2019. This growth is attributed to effective marketing campaigns or new product launches. However, this growth is not sustainable, as revenue declined slightly by 17% in 2020. More importantly, while the revenue growth from 2017 to 2019 has driven absolute profit growth, the profit margin (%) has shown a declining trend. This suggests that costs (or cost of goods sold) may have increased at a faster rate than revenue growth, reducing the company’s overall operating efficiency.
+
+**Chart 2: Profit by Year**
+- Horizontal bar chart showing total profit by year from 2017 to 2020. Tracking annual profit to ensure the company is achieving its profit target and taking steps to improve where necessary.
+- 2017: 1.8M
+- 2018: 3.1M
+- 2019: 4.5M
+- 2020: 3.7M
+
+-> The company experienced strong revenue and profit growth from 2017 ($12M Revenue, $1.8M Profit) to 2019 ($43M Revenue, $4.5M Profit). However, despite this peak, profit margins showed a downward trend (suggesting high cost growth). This financial stress culminated in 2020, where both Revenue (down 17%) and Profit (down to $0.8M) dropped sharply.
+
+**Chart 3: Profit by Year**
+- The funnel chart shows profit margins by year to measure business performance through profit margins, helping the company optimize costs and increase value from revenue.
+- 2017: 15.42%
+- 2018: 10.21%
+- 2019: 10.47%
+- 2020: 14.42%
+-> The company's efficiency, measured by profit margin, saw its highest point in 2017 (15.42%) due to strong cost control early on. However, margin efficiency dropped significantly by 5.21% in 2018 (to 10.21%), likely due to high fixed costs or insufficient revenue growth to offset those costs. While the company steadily increased margins from 2018 to 2020 through strategic adjustments, the margins in 2020 were still 1% lower than the 2017 peak, indicating that the company has not yet fully regained its initial level of cost-management efficiency.
+
+**Chart 4: Total sales orders by Year**
+- The treemap chart shows the total number of orders by year to evaluate the transaction volume, determine the level of market activity and adjust the marketing and sales strategy.
+- 2017: 2K
+- 2018: 4K
+- 2019: 14K
+- 2020: 13K
+-> The company's order volume demonstrated a strong expansion phase, steadily increasing until a peak of 14K orders in 2019, reflecting high market demand and effective fulfillment capabilities. This growth was particularly sharp from the low points of 2K orders in 2017 and 4K orders in 2018. However, the volume saw a minor moderation in the final year, decreasing slightly to 13K orders in 2020.
+
+**Chart 5: Sum of Order Quantity by Year**
+- The line chart shows the total number of orders by year to track the fluctuations in the number of orders to manage inventory, production and meet customer needs more effectively.
+- 2017: 12K
+- 2018: 59K
+- 2019: 127K
+- 2020: 77K
+The company achieved massive growth in total orders (from 12K to 127K) and revenue (from $12M to $43M) between 2017 and 2019, peaking in the latter year. However, this growth was costly: profit margins consistently declined due to rising costs per product, indicating efficiency issues. The overall upward trend abruptly reversed in 2020, when orders, revenue, and profit all dropped sharply, signaling a major market contraction and the negative culmination of the underlying cost problems.
+
+**Chart 6: Sum of Total Product Cost by Year**
+- The pie chart shows the total product cost by year to manage and control production costs, thereby optimizing profits and improving operational efficiency.
+- 2017: 9.9M (10.22%)
+- 2018: 27.0M (27.77%)
+- 2019: 38.2M (39.24%)
+- 2020: 22.1M (22.77%)
+-> The company's product cost structure was highly volatile, starting lowest in 2017 (10.22%) due to smaller scale. The cost proportion increased sharply to a peak of 39.24% in 2019, suggesting significant investment in production scale or product quality to meet high demand. This aggressive cost ratio then decreased substantially to 22.77% in 2020, reflecting the sharp decline in overall sales volume during that year.
+
+**Chart 7: Sum of Product Standard Cost by Year**
+- The last pie chart in the dashboard shows the estimated cost of producing a product by year to evaluate cost efficiency and adjust production strategies to improve profit margins.
+- 2017: 5.11M (11.63%)
+- 2018: 11.44M (26.01%)
+- 2019: 16.21M (36.86%)
+- 2020: 11.21M (25.5%)
+-> The company's estimated cost of manufacturing a product, expressed as a proportion of total cost, was highly variable. This proportion increased steadily from 2017 to a peak of 36.86% in 2019, suggesting significant investment in production quality or rising raw material costs to meet soaring demand. This trend was a major factor in the declining profit margins observed during this growth period. Following 2019, the proportion fell sharply to around 11.2% in 2020, reflecting the market contraction and subsequent reduction in production scale.
+
+### Filter
+- To help users see other branches by year more clearly, such as viewing data by continent, sales channel or product classification, the dashboard should have filters for Group, Channel, Category and Business Type.
+
+- After viewing the overview dashboard analyzing the sales year, we can use filters to compare data between groups (Group), sales channel (Channel), product category (Category), and business type (Business Type). Through this comparison, we will see the difference in sales data by year, helping to identify trends, strengths and weaknesses to make more appropriate strategic adjustments.
+
+![Filter by year dashboard](./images/filter_by_year.png)
+
+For example, when looking at metrics such as revenue, profit, profit margin, total orders, total order quantity, product cost, and estimated product manufacturing cost by North America region, through the Internet sales channel, and the product category "Clothing" in 2019 and 2020, we can see clear changes and trends.
+
+### Drill through
+![Year drill through dashboard](./images/drill_through_by_year.png)
+By using the Drill Through function, it is easy to move from an overview report to a detailed report, helping businesses analyze more deeply and make accurate business decisions:
+- **Revenue and Profit Trend Analysis:** Drill Through allows analysts to immediately break down the peak 2019 revenue and highest profit figures into quarterly or monthly performance. This isolates the exact periods where the company performed best, helping to identify successful campaigns, seasonal patterns, or specific market events that drove the success.
+- **Efficiency and Margin Control:** By drilling into profit margins by month in 2019, the business can pinpoint periods of maximum efficiency and contrast them with periods needing improvement. This is key for optimizing cost management and adjusting pricing strategies.
+- **Order Volume and Demand:** Applying Drill Through to the total number of orders and detailed order numbers reveals specific order trends and peak seasonality within 2019. This information is essential for logistics, sales forecasting, and production planning to ensure supply meets demand.
+- **Cost Management and Production:** Finally, drilling into product costs and the estimated cost of manufacturing a product by quarter or month allows for precise cost control and validation of production efficiency. This helps manage product quality investments against overall profitability.
