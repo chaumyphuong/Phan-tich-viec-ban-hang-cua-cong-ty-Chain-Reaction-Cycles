@@ -1,3 +1,0 @@
-- [Yêu cầu đề bài](./kiem%20tra/DE%20A.pdf) - Password: MIS314DV02
-- [Data gốc](./kiem%20tra/Data.rar)
-- Công cụ: excel, Orange
