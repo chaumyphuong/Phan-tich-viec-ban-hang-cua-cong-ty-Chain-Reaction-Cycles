@@ -229,11 +229,19 @@ After reviewing several datasets on Kaggle, I selected the AdventureWorks Sales 
 
 ## Data cleaning
 The following cleaning actions were applied:
-- **In the Date table:** Fiscal Year and Month columns were not in the desired format → reformatted using Excel formulas for consistency.
+- **In the Date table:** 
+
+![Raw data in Date table](./images/Date_raw.png)
+
+Fiscal Year and Month columns were not in the desired format → reformatted using Excel formulas for consistency.
 - **In the Sales fact table:**
+
+![Raw data in Sales table](./images/Sales_data_raw.png)
   - Unit Price Discount Pct column contained only zeros across all rows → removed as redundant.
   - Because the Unit Price Discount Pct column is deleted data, it affects the Sales Amount column, so the Sales Amount column is also deleted.
   - Extended Amount was renamed to Sales Amount to correctly reflect line total revenue.
+
+![Cleaned data in Sales table](./images/Sales_data_cleaned.png)
 
 ## Data transformation
 To enable deeper and more flexible analysis, I transformed the flat structure into a proper Snowflake schema by normalizing dimension tables:
@@ -251,11 +259,8 @@ To enable deeper and more flexible analysis, I transformed the flat structure in
 - **Total Loss Orders:** Count of distinct Sales Orders where the total Profit for that entire order is less than zero.
 - **Total Profit Orders:** Count of distinct Sales Orders where the total Profit for that entire order is greater than zero.
 
+![Add new measures to Sales table](./images/Sales_new_measures.png)
+
 ## Data Reduction
-To streamline the model and improve performance:
-- **In the Date table:** removed redundant columns MonthKey and Date
-- The Customer table was largely excluded from deep analysis (kept only for counting distinct customers) because:
-  - Many customer records were incomplete or placeholders
-  - Weak direct relationship with the Sales fact table in the current dataset version
-  - Limited analytical value beyond basic customer count
+In the Date table, the Monthkey and Date columns are the columns whose data will be deleted because this is redundant data for the group. In addition, the Customer table data is also chosen by the group to be ignored, not analyzed and used much other than to calculate the total number of customers who have purchased because the table data is difficult to analyze and does not have a clear connection with other tables as well as the Sales table.
 
