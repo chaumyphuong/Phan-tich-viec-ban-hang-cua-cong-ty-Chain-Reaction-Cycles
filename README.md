@@ -292,4 +292,17 @@ Financial metrics that businesses are interested in can help businesses monitor 
 - Total customers: 18.49 thousand
 - Profit margin: 11.85%
 
-
+![Sales dashboard](./images/Sales_dashboard.png)
+![Business type dashboard](./images/business_type_dashboard.png)
+![Reseller dashboard](./images/reseller_dashboard.png)
+![Category dashboard](./images/category_dashboard.png)
+![Subcategory dashboard](./images/subcategory_dashboard.png)
+![Product sale dashboard](./images/product_sale_dashboard.png)
+![Year dashboard](./images/year_dashboard.png)
+![Quarter dashboard](./images/quarter_dashboard.png)
+![Month dashboard](./images/month_dashboard.png)
+![Group sale dashboard](./images/group_sale_dashboard.png)
+![Country sale dashboard](./images/country_sale_dashboard.png)
+![Region sale dashboard](./images/region_sale_dashboard.png)
+![Channel dashboard](./images/channel_dashboard.png)
+![Sales order dashboard](./images/sales_order_dashboard.png)
